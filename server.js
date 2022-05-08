@@ -18,7 +18,6 @@ app.use(errorHandler);
 app.listen(configApp.port, async () => {
   console.log(`SERVER RUNNING ON PORT = ${configApp.port}`.bgYellow);
   const conn = await mongoose.connect(configApp.databaseUrl, { useNewUrlParser: true, useUnifiedTopology: true });
-  var db = mongoose.connection;
-  db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-  console.log(`MongoDB Connected: ${conn.connection.host}`.cyan.underline.bold);
+  conn.connection.on('error', console.error.bind(console, 'MongoDB connection error:'));
+  console.log(`MongoDB Connected: ${conn.connection.host}:${conn.connection.port}`.cyan.underline.bold);
 });
