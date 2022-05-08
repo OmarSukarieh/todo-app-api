@@ -7,7 +7,9 @@ const configApp = require("../config");
 const users = [
   new User({
     first_name: "Omar",
-    last_name: "Sukarieh"
+    last_name: "Sukarieh",
+    username: 'omars.dev',
+    password: 'secret'
   }),]
 
 
