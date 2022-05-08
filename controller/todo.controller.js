@@ -4,18 +4,6 @@ const asyncHandler = require("../middleware/async.js");
 const Todo = require("../model/Todo");
 const User = require("../model/User");
 
-exports.getTodos = asyncHandler(async (req, res, next) => {
-  const { userId } = req.query;
-
-  const todo = await User.findById(userId).populate('todo')
-  if (!todo) return next(new ErrorResponse(`Todo is not found`, 404))
-
-  res.status(200).json({
-    success: true,
-    data: todo,
-  });
-});
-
 exports.getTodo = asyncHandler(async (req, res, next) => {
   const { id: todoId } = req.params
 
